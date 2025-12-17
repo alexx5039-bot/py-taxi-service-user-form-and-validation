@@ -2,8 +2,10 @@ import re
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django import forms
-from .models import Driver, Car
+from .models import Car
+from django.contrib.auth import get_user_model
 
+Driver = get_user_model()
 
 def validate_license_number(license_number: str):
     if not re.fullmatch(r"^[A-Z]{3}\d{5}$", license_number):
